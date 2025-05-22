@@ -1,3 +1,4 @@
+
 'use server';
 /**
  * @fileOverview Extracts keywords and important points from a document using AI.
@@ -9,16 +10,14 @@
 
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
+import { ExtractKeyInformationOutputSchema } from '@/ai/schemas'; // Import from shared schemas
 
 const ExtractKeyInformationInputSchema = z.object({
   text: z.string().describe('The text document to extract key information from.'),
 });
 export type ExtractKeyInformationInput = z.infer<typeof ExtractKeyInformationInputSchema>;
 
-const ExtractKeyInformationOutputSchema = z.object({
-  keywords: z.array(z.string()).describe('Keywords extracted from the text.'),
-  importantPoints: z.array(z.string()).describe('Important points extracted from the text.'),
-});
+// Type is derived from the imported schema
 export type ExtractKeyInformationOutput = z.infer<typeof ExtractKeyInformationOutputSchema>;
 
 export async function extractKeyInformation(input: ExtractKeyInformationInput): Promise<ExtractKeyInformationOutput> {
@@ -28,7 +27,7 @@ export async function extractKeyInformation(input: ExtractKeyInformationInput): 
 const prompt = ai.definePrompt({
   name: 'extractKeyInformationPrompt',
   input: {schema: ExtractKeyInformationInputSchema},
-  output: {schema: ExtractKeyInformationOutputSchema},
+  output: {schema: ExtractKeyInformationOutputSchema}, // Use imported schema
   prompt: `You are an expert at extracting key information from text documents.
 
   Extract the keywords and important points from the following text.
@@ -48,7 +47,7 @@ const extractKeyInformationFlow = ai.defineFlow(
   {
     name: 'extractKeyInformationFlow',
     inputSchema: ExtractKeyInformationInputSchema,
-    outputSchema: ExtractKeyInformationOutputSchema,
+    outputSchema: ExtractKeyInformationOutputSchema, // Use imported schema
   },
   async input => {
     const {output} = await prompt(input);
