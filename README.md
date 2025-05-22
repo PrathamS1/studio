@@ -2,6 +2,8 @@
 
 Insightful Reader is a Next.js application that leverages Generative AI (via Genkit and Google Gemini) to provide users with summaries, keyword extraction, important point identification, and character analysis from text documents. Users can either paste text directly or upload files (.txt, .md, .docx, .pdf).
 
+_**This application is solely made through Google's Firebase Studio for learning purposes.**_
+
 ## Features
 
 -   **Text Input & File Upload**: Supports direct text pasting or uploading of `.txt`, `.md`, `.docx`, and `.pdf` files.
