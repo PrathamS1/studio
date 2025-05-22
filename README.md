@@ -142,9 +142,3 @@ Ensure your hosting provider has Node.js 18.x or later. You will also need to co
 
 -   To run ESLint: `npm run lint`
 -   To type check with TypeScript: `npm run typecheck`
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit pull requests or open issues.
-(If you have specific contribution guidelines, add them here).
-```
